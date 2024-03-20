@@ -1,0 +1,3 @@
+/home/pfromm/chem281/hw3/CMakeFiles/PS3.dir
+/home/pfromm/chem281/hw3/CMakeFiles/edit_cache.dir
+/home/pfromm/chem281/hw3/CMakeFiles/rebuild_cache.dir

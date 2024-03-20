@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Set the project name and version
+project(PS3 VERSION 1.0 LANGUAGES CXX)
+
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Armadillo configuration
+# Replace "/path/to/armadillo" with the actual path where Armadillo is installed
+set(Armadillo_DIR "/path/to/armadillo/share/Armadillo/CMake")
+
+# Find Armadillo library
+find_package(Armadillo REQUIRED)
+
+# Add the executable
+add_executable(${PROJECT_NAME} ps3.cpp time.cpp)
+
+# Link against Armadillo
+target_link_libraries(${PROJECT_NAME} PRIVATE ${ARMADILLO_LIBRARIES})
+
+# If necessary, add the include directories for Armadillo
+target_include_directories(${PROJECT_NAME} PRIVATE ${ARMADILLO_INCLUDE_DIRS})
+
+

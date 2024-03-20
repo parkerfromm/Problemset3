@@ -1,0 +1,32 @@
+CXX = g++
+CXXFLAGS = -g -MMD -MP
+LDFLAGS = -mavx512f -larmadillo -llapack -lblas
+
+
+SRCS = $(wildcard *.cpp)
+OBJS = $(SRCS:.cpp=.o)
+DEPS = $(SRCS:.cpp=.d)
+
+EXE = $(shell grep -lre 'main\s*(' --include='*.cpp' ))
+
+# Default target
+all: $(EXE)
+
+# Compile and link the executable
+$(EXE): $(OBJS)
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Include the dependency files
+-include $(DEPS)
+
+# Clean up
+clean:
+	rm -f $(EXE) $(OBJS) $(DEPS)
+
+install: $(EXE)
+	# cp $(EXE) /usr/local/bin/
+
+.PHONY: all clean install
