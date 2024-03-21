@@ -137,9 +137,9 @@ const timer &timer::print() const
 {
     // auto elapsed= std::chrono::duration_cast<std::chrono::seconds>(elapsed_t).count();
 
-    auto elapsed_seconds = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed_t).count();
+    auto elapsed_seconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_t).count();
     cout << elapsed_seconds << elapsed_seconds
-         << " nano seconds spent in program unit '" << label << "'" << endl;
+         << " microseconds spent in program unit '" << label << "'" << endl;
 
     return *this;
 }

@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <armadillo>
 #include <immintrin.h>
+#include <armadillo>
 #include "timer.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,87 +157,88 @@ namespace mynamespace_i
     };
 }
 
-namespace mynamespace_std
-{
+// namespace mynamespace_std
+// {
+//     using namespace std;
 
-    vector<double> operator+(const vector<double> &a, const vector<double> &b)
-    {
-        vector<double> return_vec = a + b;
-        return return_vec;
-    };
+//     vector<double> operator+(const vector<double> &a, const vector<double> &b)
+//     {
+//         vector<double> return_vec = a + b;
+//         return return_vec;
+//     };
 
-    vector<double> operator+(const vector<double> &a, const double &b)
-    {
-        vector<double> return_vec = a + b;
-        return return_vec;
-    };
+//     vector<double> operator+(const vector<double> &a, const double &b)
+//     {
+//         vector<double> return_vec = a + b;
+//         return return_vec;
+//     };
 
-    vector<double> operator+(const double &b, const vector<double> &a)
-    {
-        vector<double> return_vec = a + b;
-        return return_vec;
-    };
+//     vector<double> operator+(const double &b, const vector<double> &a)
+//     {
+//         vector<double> return_vec = a + b;
+//         return return_vec;
+//     };
 
-    ///////
+//     ///////
 
-    vector<double> operator-(const vector<double> &a, const vector<double> &b)
-    {
-        vector<double> return_vec = a - b;
-        return return_vec;
-    };
+//     vector<double> operator-(const vector<double> &a, const vector<double> &b)
+//     {
+//         vector<double> return_vec = a - b;
+//         return return_vec;
+//     };
 
-    vector<double> operator-(const vector<double> &a, const double &b)
-    {
-        vector<double> return_vec = a - b;
-        return return_vec;
-    };
+//     vector<double> operator-(const vector<double> &a, const double &b)
+//     {
+//         vector<double> return_vec = a - b;
+//         return return_vec;
+//     };
 
-    vector<double> operator-(const double &b, const vector<double> &a)
-    {
-        vector<double> return_vec = b - a;
-        return return_vec;
-    };
+//     vector<double> operator-(const double &b, const vector<double> &a)
+//     {
+//         vector<double> return_vec = b - a;
+//         return return_vec;
+//     };
 
-    ////////
+//     ////////
 
-    vector<double> operator*(const vector<double> &a, const vector<double> &b)
-    {
-        vector<double> return_vec = a * b;
-        return return_vec;
-    };
+//     vector<double> operator*(const vector<double> &a, const vector<double> &b)
+//     {
+//         vector<double> return_vec = a * b;
+//         return return_vec;
+//     };
 
-    vector<double> operator*(const vector<double> &a, const double &b)
-    {
-        vector<double> return_vec = a * b;
-        return return_vec;
-    };
-    vector<double> operator*(const double &b, const vector<double> &a)
-    {
-        vector<double> return_vec = a * b;
-        return return_vec;
-    };
+//     vector<double> operator*(const vector<double> &a, const double &b)
+//     {
+//         vector<double> return_vec = a * b;
+//         return return_vec;
+//     };
+//     vector<double> operator*(const double &b, const vector<double> &a)
+//     {
+//         vector<double> return_vec = a * b;
+//         return return_vec;
+//     };
 
-    //////////
+//     //////////
 
-    vector<double> operator/(const vector<double> &a, const vector<double> &b)
-    {
-        vector<double> return_vec = a / b;
-        return return_vec;
-    };
+//     vector<double> operator/(const vector<double> &a, const vector<double> &b)
+//     {
+//         vector<double> return_vec = a / b;
+//         return return_vec;
+//     };
 
-    vector<double> operator/(const vector<double> &a, const double &b)
-    {
-        vector<double> return_vec = a / b;
-        return return_vec;
-    };
+//     vector<double> operator/(const vector<double> &a, const double &b)
+//     {
+//         vector<double> return_vec = a / b;
+//         return return_vec;
+//     };
 
-    vector<double> operator/(const double &b, const vector<double> &a)
-    {
-        vector<double> return_vec = b / a;
-        return return_vec;
-    };
+//     vector<double> operator/(const double &b, const vector<double> &a)
+//     {
+//         vector<double> return_vec = b / a;
+//         return return_vec;
+//     };
 
-}
+// }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /// im not sure if more effective way but from example since we want tos ubtract by 3.14,   ////
@@ -371,128 +372,124 @@ double *divide(const double *a, const double *b, size_t size, timer &timer)
     return return_vec;
 };
 
-// namespace mynamespace_armma
-// {
+namespace mynamespace_armma
+{
 
-//     using namespace arma;
+    using namespace arma;
 
-//     arma::Row<double> operator+(const arma::Row<double> &a, const arma::Row<double> &b)
-//     {
+    arma::vec operator+(const arma::vec &a, const arma::vec &b)
+    {
+        arma::vec return_vec = a + b;
+        return return_vec;
+    };
 
-//         arma::Row<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             // timer.start();
-//             return_vec.at(i) = a(i) + b(i);
-//             // timer.stop();
-//         }
-//         return return_vec;
-//     };
+    arma::vec operator+(const arma::vec &a, const double &b)
+    {
 
-//     arma::Row<double> operator+(const arma::Row<double> &a, const &double b)
-//     {
+        arma::vec return_vec = a + b;
+        return return_vec;
+    };
 
-//         arma::Row<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             // timer.start();
-//             return_vec.at(i) = a(i) + b;
-//             // timer.stop();
-//         }
-//         return return_vec;
-//     };
+    // arma::Row<double> operator+(const arma::Row<double> &a, const double &b)
+    // {
 
-//     arma::Row<double> operator+(const arma::Row<double> &a, const arma::Row<double> &b)
-//     {
+    //     arma::Row<double> return_vec(a.size());
+    //     for (size_t i = 0; i < a.size(); i++)
+    //     {
+    //         // timer.start();
+    //         return_vec.at(i) = a(i) + b;
+    //         // timer.stop();
+    //     }
+    //     return return_vec;
+    // };
 
-//         armma::Row<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             // timer.start();
-//             return_vec.at(i) = a(i) + b(i);
-//             // timer.stop();
-//         }
-//         return return_vec;
-//     };
+    // arma::Row<double> operator-(const arma::Row<double> &a, const arma::Row<double> &b)
+    // {
 
-//     arma::Row<double> operator-(const &arma::Row<double> &a, const &arma::Row<double> &b)
-//     {
+    //     arma::Row<double> return_vec(a.size());
+    //     for (size_t i = 0; i < a.size(); i++)
+    //     {
+    //         // timer.start();
+    //         return_vec.at(i) = a(i) - b(i);
+    //         // timer.stop();
+    //     }
+    //     return return_vec;
+    // };
 
-//         arma::Row<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             // timer.start();
-//             return_vec.at(i) = a(i) - b(i);
-//             // timer.stop();
-//         }
-//         return return_vec;
-//     };
+    arma::vec operator-(const arma::vec &a, const arma::vec &b)
+    {
 
-//     arma::Row<double> operator-(const &arma::Row<double> &a, const double &b)
-//     {
+        arma::vec return_vec = a - b;
+        return return_vec;
+        ;
+    }
 
-//         arma::Row<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             timer.start();
-//             return_vec.at(i) = a(i) - b;
-//             timer.stop();
-//         }
-//         return return_vec;
-//     };
+    arma::vec operator-(const arma::vec &a, const double &b)
+    {
 
-//     arma::Row<double> operator*(const arma::Row<double> &a, const arma::Row<double> &b)
-//     {
+        arma::vec return_vec = a - b;
+        // for (size_t i = 0; i < a.size(); i++)
+        // {
+        //     // timer.start();
+        //     return_vec.at(i) = a(i) - b;
+        //     // timer.stop();
+        // }
+        return return_vec;
+    };
 
-//         arma::Vec<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             timer.start();
-//             return_vec.at(i) = a(i) * b(i);
-//             timer.stop();
-//         }
-//         return return_vec;
-//     };
+    arma::vec operator*(const arma::vec &a, const arma::vec &b)
+    {
 
-//     arma::Row<double> operator*(const arma::vec<double> &a, const double &b)
-//     {
+        arma::vec return_vec = a % b;
+        // for (size_t i = 0; i < a.size(); i++)
+        // {
+        //     // timer.start();
+        //     return_vec.at(i) = arma::dot(a(i), b(i));
+        //     // timer.stop();
+        // }
+        return return_vec;
+    };
 
-//         arma::vec<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             timer.start();
-//             return_vec.at(i) = a(i) * b;
-//             timer.stop();
-//         }
-//         return return_vec;
-//     };
+    arma::vec operator*(const arma::vec &a, const double &b)
+    {
 
-//     arma::Row<double> operator/(const arma::Row<double> &a, const arma::Row<double> &b)
-//     {
+        arma::vec return_vec = a * b;
+        // for (size_t i = 0; i < a.size(); i++)
+        // {
+        //     // timer.start();
+        //     return_vec.at(i) = a(i) * b;
+        //     // timer.stop();
+        // }
+        return return_vec;
+    };
 
-//         arma::Row<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             // timer.start();
-//             return_vec.at(i) = a(i) / b(i);
-//             // timer.stop();
-//         }
-//         return return_vec;
-//     };
+    // not defininf because i think its causing a recursion issue
 
-//     arma::Row<double> operator/(const arma::Row<double> &a, const double &b)
-//     {
+    //     arma::vec operator/(const arma::vec &a, const arma::vec &b)
+    //     {
+    //         arma::vec return_vec = arma::elem_divide(a, b);
+    //         // for (size_t i = 0; i < a.size(); i++)
+    //         // {
+    //         //     // timer.start();
+    //         //     return_vec.at(i) = a(i) / b(i);
+    //         //     // timer.stop();
+    //         // }
+    //         return return_vec;
+    //     };
 
-//         arma::Row<double> return_vec(a.size());
-//         for (size_t i = 0; i < a.size(); i++)
-//         {
-//             // timer.start();
-//             return_vec.at(i) = a(i) / b;
-//             // timer.stop();
-//         }
-//         return return_vec;
-//     };
-// }
+    //     arma::vec operator/(const arma::vec &a, const double &b)
+    //     {
+
+    //         arma::Row<double> return_vec = a / b;
+    //         // for (size_t i = 0; i < a.size(); i++)
+    //         // {
+    //         //     // timer.start();
+    //         //     return_vec.at(i) = a(i) / b;
+    //         //     // timer.stop();
+    //         // }
+    //         return return_vec;
+    //     };
+}
 
 double *add_avx512(const double *a, const double *b, size_t size, timer &timer)
 {
@@ -539,7 +536,7 @@ double *multiply_avx512(const double *a, const double *b, size_t size, timer &ti
 
     double *return_vec = (double *)malloc(size * sizeof(double));
     for (size_t i = 0; i < size; i += 8)
-    { // Process 8 elements at a time
+    { // Process 8 elements at a time/
         __m512d a_vec = _mm512_loadu_pd(&a[i]);
         __m512d b_vec = _mm512_loadu_pd(&b[i]);
         __m512d result_vec = _mm512_mul_pd(a_vec, b_vec);
@@ -668,22 +665,34 @@ void test_v(size_t size, timer &timer)
     fill_rand(d, size);
     fill_rand(e, size);
 
-    double *return_vec = add_avx512(multiply_avx512(b, c, size, timer), divide_avx512(d, e, size, timer), size, timer);
+    // double *return_vec = add_avx512(multiply_avx512(b, c, size, timer), divide_avx512(d, e, size, timer), size, timer);
+
     cout << "yayyy test_v works" << endl;
 }
 
 void test_iv(size_t size, timer &timer)
 {
-    // using mynamespace_armma;
+    using namespace mynamespace_armma;
     arma::vec a(size);
     arma::vec b(size);
     arma::vec c(size);
     arma::vec d(size);
     arma::vec e(size);
+
+    // arma::Row<double> a(size);
     // arma::Row<double> b(size);
     // arma::Row<double> c(size);
     // arma::Row<double> d(size);
     // arma::Row<double> e(size);
+    // // = arma::randu<Row<double>>(size);
+    // // arma::Row<double> b = arma::randu<Row<double>>(size);
+    // // arma::Row<double> c = arma::randu<Row<double>>(size);
+    // // arma::Row<double> d = arma::randu<Row<double>>(size);
+    // // arma::Row<double> e = arma::randu<Row<double>>(size);
+    // // arma::Row<double> b(size);
+    // // arma::Row<double> c(size);
+    // // arma::Row<double> d(size);
+    // // arma::Row<double> e(size);
 
     auto fill_rand = [](arma::vec &vector_to_fill, size_t size)
     {
@@ -691,12 +700,21 @@ void test_iv(size_t size, timer &timer)
         {
             vector_to_fill.at(i) = static_cast<double>(rand()) / RAND_MAX;
 
-            if (vector_to_fill(i) == 0)
-            {
-                vector_to_fill(i) = 0.0001;
-            }
+    for (size_t i = 0; i < size; i++)
+    {
+        if (vector_to_fill(i) == 0)
+        {
+            vector_to_fill(i) = 0.0001;
         }
-    };
+    }
+        } };
+
+    //         if (vector_to_fill(i) == 0)
+    //         {
+    //             vector_to_fill(i) = 0.0001;
+    //         }
+    //     }
+    // };
 
     fill_rand(a, size);
     fill_rand(b, size);
@@ -705,48 +723,49 @@ void test_iv(size_t size, timer &timer)
     fill_rand(e, size);
 
     timer.start();
-    arma::vec return_vec = b % c + d / e - 3.14;
+    arma::vec return_vec = b * c + d / e - 3.14;
     timer.stop();
     cout << "yayyy test_iV works" << endl;
 }
 
-void test_i_std(size_t size, timer &timer)
+// void test_i_std(size_t size, timer &timer)
 
-{
-    using namespace mynamespace_std;
+// {
+//     // using namespace mynamespace_std;
+//     using namespace std;
 
-    vector<double> a(size);
-    vector<double> b(size);
-    vector<double> c(size);
-    vector<double> d(size);
-    vector<double> e(size);
+//     vector<double> a(size);
+//     vector<double> b(size);
+//     vector<double> c(size);
+//     vector<double> d(size);
+//     vector<double> e(size);
 
-    auto fill_rand = [](vector<double> &vec_to_fill)
-    {
-        for (size_t i = 0; i < vec_to_fill.size(); i++)
-        {
-            vec_to_fill[i] = static_cast<double>(rand()) / RAND_MAX;
-            if (vec_to_fill[i] == 0)
-            {
-                vec_to_fill[i] = 0.0001;
-            }
-        }
-    };
+//     auto fill_rand = [](vector<double> &vec_to_fill)
+//     {
+//         for (size_t i = 0; i < vec_to_fill.size(); i++)
+//         {
+//             vec_to_fill[i] = static_cast<double>(rand()) / RAND_MAX;
+//             if (vec_to_fill[i] == 0)
+//             {
+//                 vec_to_fill[i] = 0.0001;
+//             }
+//         }
+//     };
 
-    fill_rand(a);
-    fill_rand(b);
-    fill_rand(c);
-    fill_rand(d);
-    fill_rand(e);
+//     fill_rand(a);
+//     fill_rand(b);
+//     fill_rand(c);
+//     fill_rand(d);
+//     fill_rand(e);
 
-    /////////TODO///////////
-    //// add the timer right here to finish problem///
+//     /////////TODO///////////
+//     //// add the timer right here to finish problem///
 
-    timer.start();
-    vector<double> return_vec = b * c + d / e - 3.14;
-    timer.stop();
-    cout << "yayyy test_i_std works" << endl;
-};
+//     timer.start();
+//     vector<double> return_vec = b * c + d / e - 3.14;
+//     timer.stop();
+//     cout << "yayyy test_i_std works" << endl;
+// };
 
 int main(int argc, char *argv[])
 {
@@ -754,17 +773,16 @@ int main(int argc, char *argv[])
 
     /// FINISH
     /// problem 2(i) implementation / testing
-    timer timer1;
+    timer timer1("(i)");
     timer timer2;
-    timer timer3;
-    timer timer4;
-    timer timer5;
+    timer timer3("(ii) for loop");
+    timer timer4("arma overload");
+    // timer timer5;
 
     test_i(size, timer1);
-    // test_i_std(100, timer2);
     test_iii(size, timer3);
-    // test_v(100, timer4);
-    test_iv(size, timer5);
+    test_v(size, timer2);
+    test_iv(size, timer4);
 
     return 0;
 }
