@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <immintrin.h>
+#include <algorithm>
 #include <armadillo>
 #include "timer.h"
 
@@ -157,88 +158,106 @@ namespace mynamespace_i
     };
 }
 
-// namespace mynamespace_std
-// {
-//     using namespace std;
+namespace mynamespace_std
+{
+    using namespace std;
 
-//     vector<double> operator+(const vector<double> &a, const vector<double> &b)
-//     {
-//         vector<double> return_vec = a + b;
-//         return return_vec;
-//     };
+    vector<double> operator+(const vector<double> &a, const vector<double> &b)
+    {
+        vector<double> return_vec(a.size());
+        transform(a.begin(), a.end(), b.begin(), return_vec.begin(),
+                  [](const double &ai, const double &bi)
+                  { return ai + bi; });
+        return return_vec;
+    };
 
-//     vector<double> operator+(const vector<double> &a, const double &b)
-//     {
-//         vector<double> return_vec = a + b;
-//         return return_vec;
-//     };
+    vector<double> operator+(const vector<double> &a, const double &b)
+    {
+        vector<double> return_vec = a + b;
+        return return_vec;
+    };
 
-//     vector<double> operator+(const double &b, const vector<double> &a)
-//     {
-//         vector<double> return_vec = a + b;
-//         return return_vec;
-//     };
+    vector<double> operator+(const double &b, const vector<double> &a)
+    {
+        vector<double> return_vec = a + b;
+        return return_vec;
+    };
 
-//     ///////
+    ///////
 
-//     vector<double> operator-(const vector<double> &a, const vector<double> &b)
-//     {
-//         vector<double> return_vec = a - b;
-//         return return_vec;
-//     };
+    vector<double> operator-(const vector<double> &a, const vector<double> &b)
+    {
+        vector<double> return_vec = a - b;
+        return return_vec;
+    };
 
-//     vector<double> operator-(const vector<double> &a, const double &b)
-//     {
-//         vector<double> return_vec = a - b;
-//         return return_vec;
-//     };
+    vector<double> operator-(const vector<double> &a, const double &b)
+    {
 
-//     vector<double> operator-(const double &b, const vector<double> &a)
-//     {
-//         vector<double> return_vec = b - a;
-//         return return_vec;
-//     };
+        vector<double> return_vec(a.size());
+        std::transform(a.begin(), a.end(), return_vec.begin(),
+                       [b](const double &ai) -> double
+                       { return ai - b; });
+        return return_vec;
+    };
 
-//     ////////
+    vector<double> operator-(const double &b, const vector<double> &a)
+    {
+        vector<double> return_vec = b - a;
+        return return_vec;
+    };
 
-//     vector<double> operator*(const vector<double> &a, const vector<double> &b)
-//     {
-//         vector<double> return_vec = a * b;
-//         return return_vec;
-//     };
+    ////////
 
-//     vector<double> operator*(const vector<double> &a, const double &b)
-//     {
-//         vector<double> return_vec = a * b;
-//         return return_vec;
-//     };
-//     vector<double> operator*(const double &b, const vector<double> &a)
-//     {
-//         vector<double> return_vec = a * b;
-//         return return_vec;
-//     };
+    vector<double> operator*(const vector<double> &a, const vector<double> &b)
+    {
+        vector<double> return_vec(a.size());
+        transform(a.begin(), a.end(), b.begin(), return_vec.begin(),
+                  [](const double &ai, const double &bi)
+                  { return ai * bi; });
+        return return_vec;
+    };
 
-//     //////////
+    vector<double> operator*(const vector<double> &a, const double &b)
+    {
+        vector<double> return_vec = a * b;
+        return return_vec;
+    };
+    vector<double> operator*(const double &b, const vector<double> &a)
+    {
 
-//     vector<double> operator/(const vector<double> &a, const vector<double> &b)
-//     {
-//         vector<double> return_vec = a / b;
-//         return return_vec;
-//     };
+        vector<double> return_vec = a * b;
+        return return_vec;
+    };
 
-//     vector<double> operator/(const vector<double> &a, const double &b)
-//     {
-//         vector<double> return_vec = a / b;
-//         return return_vec;
-//     };
+    //////////
 
-//     vector<double> operator/(const double &b, const vector<double> &a)
-//     {
-//         vector<double> return_vec = b / a;
-//         return return_vec;
-//     };
+    vector<double> operator/(const vector<double> &a, const vector<double> &b)
+    {
+        auto divide = [](double ai, double bi)
+        {
+            return ai / bi;
+        };
 
-// }
+        vector<double> return_vec(a.size());
+        std::transform(a.begin(), a.end(), b.begin(), return_vec.begin(), divide);
+
+        return return_vec;
+    };
+
+    vector<double> operator/(const vector<double> &a, const double &b)
+    {
+        vector<double> return_vec = a / b;
+        return return_vec;
+    };
+
+    vector<double> operator/(const double &b, const vector<double> &a)
+    {
+        vector<double> return_vec = b / a;
+        return return_vec;
+    };
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /// im not sure if more effective way but from example since we want tos ubtract by 3.14,   ////
@@ -728,44 +747,44 @@ void test_iv(size_t size, timer &timer)
     cout << "yayyy test_iV works" << endl;
 }
 
-// void test_i_std(size_t size, timer &timer)
+void test_i_std(size_t size, timer &timer)
 
-// {
-//     // using namespace mynamespace_std;
-//     using namespace std;
+{
+    using namespace mynamespace_std;
+    // using namespace std;
 
-//     vector<double> a(size);
-//     vector<double> b(size);
-//     vector<double> c(size);
-//     vector<double> d(size);
-//     vector<double> e(size);
+    vector<double> a(size);
+    vector<double> b(size);
+    vector<double> c(size);
+    vector<double> d(size);
+    vector<double> e(size);
 
-//     auto fill_rand = [](vector<double> &vec_to_fill)
-//     {
-//         for (size_t i = 0; i < vec_to_fill.size(); i++)
-//         {
-//             vec_to_fill[i] = static_cast<double>(rand()) / RAND_MAX;
-//             if (vec_to_fill[i] == 0)
-//             {
-//                 vec_to_fill[i] = 0.0001;
-//             }
-//         }
-//     };
+    auto fill_rand = [](vector<double> &vec_to_fill)
+    {
+        for (size_t i = 0; i < vec_to_fill.size(); i++)
+        {
+            vec_to_fill[i] = static_cast<double>(rand()) / RAND_MAX;
+            if (vec_to_fill[i] == 0)
+            {
+                vec_to_fill[i] = 0.0001;
+            }
+        }
+    };
 
-//     fill_rand(a);
-//     fill_rand(b);
-//     fill_rand(c);
-//     fill_rand(d);
-//     fill_rand(e);
+    fill_rand(a);
+    fill_rand(b);
+    fill_rand(c);
+    fill_rand(d);
+    fill_rand(e);
 
-//     /////////TODO///////////
-//     //// add the timer right here to finish problem///
+    /////////TODO///////////
+    //// add the timer right here to finish problem///
 
-//     timer.start();
-//     vector<double> return_vec = b * c + d / e - 3.14;
-//     timer.stop();
-//     cout << "yayyy test_i_std works" << endl;
-// };
+    timer.start();
+    vector<double> return_vec = b * c + d / e - 3.14;
+    timer.stop();
+    cout << "yayyy test_i_std works" << endl;
+};
 
 int main(int argc, char *argv[])
 {
@@ -773,15 +792,16 @@ int main(int argc, char *argv[])
 
     /// FINISH
     /// problem 2(i) implementation / testing
-    timer timer1("(i)");
-    timer timer2;
-    timer timer3("(ii) for loop");
+    timer timer1("standard");
+    timer timer2("for loop");
+    timer timer3("C style");
     timer timer4("arma overload");
-    // timer timer5;
+    timer timer5("avx512");
 
-    test_i(size, timer1);
+    test_i_std(size, timer1);
+    test_i(size, timer2);
     test_iii(size, timer3);
-    test_v(size, timer2);
+    test_v(size, timer5);
     test_iv(size, timer4);
 
     return 0;
